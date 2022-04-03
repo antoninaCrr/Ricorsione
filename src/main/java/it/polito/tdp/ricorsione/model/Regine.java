@@ -5,19 +5,22 @@ import java.util.List;
 
 public class Regine {
 	
+	// questa è la prima stesura del codice che mi calcola TUTTE le soluzioni
+	// la ricorsione una volta partita tende a generare tutte le soluzioni
 	private List<List<Integer>> tutte ;
 
 	public List<List<Integer>> cercaRegine(int N) {
-		this.tutte = new ArrayList<List<Integer>>();
+		this.tutte = new ArrayList<List<Integer>>(); // contenitore di soluzioni che creiamo vuoto
 		List<Integer> parziale = new ArrayList<Integer>() ;
 		regine_ricorsiva(parziale, 0, N);	
 		return this.tutte ;
-	}
+	}// se non ci sono soluzioni, ottengo una lista vuota
 	
 	private void regine_ricorsiva(List<Integer> parziale, int livello, int N ) {
 		if(livello==N) { // caso terminale
 //			System.out.println(parziale);
-			this.tutte.add(new ArrayList<Integer>(parziale));
+			this.tutte.add(new ArrayList<Integer>(parziale)); // anzichè fare un'aggiunta sulla console, la faccio in questo contenitore
+															  // senza new otterrei una lista vuota, ripulita dal backtracking
 		} else {
 			// ho già parziale[0] fino a parziale[livello-1] già decise
 			// devo decidere parziale[livello] tra tutti i valori possibili
